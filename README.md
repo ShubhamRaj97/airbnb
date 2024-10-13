@@ -1,4 +1,4 @@
 # README
 
-#ruby on rails + react project
+## ruby on rails + react project
 
