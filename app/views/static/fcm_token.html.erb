@@ -1,0 +1,56 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firebase Device Token Generator</title>
+</head>
+<body>
+    <h1>Generate Firebase Device Token</h1>
+    <button id="generateToken">Generate Token</button>
+    <p id="token"></p>
+
+    <!-- Use type="module" for ES module imports -->
+    <script type="module">
+        // Firebase configuration (replace with your Firebase project settings)
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.18.0/firebase-app.js";
+        import { getMessaging, getToken } from "https://www.gstatic.com/firebasejs/9.18.0/firebase-messaging.js";
+
+        const firebaseConfig = {
+          apiKey: "AIzaSyDIm521oJxxm8ioq49S1Hp0DWXTUkLQ6lA", // Replace with your Firebase Web API Key
+          authDomain: "airbnb-9ff4e.firebaseapp.com",
+          projectId: "airbnb-9ff4e",
+          storageBucket: "airbnb-9ff4e.appspot.com",
+          messagingSenderId: "359393472687",
+          appId: "1:359393472687:web:7042acbf8613c951d5a45a",
+          measurementId: "G-XS3CZ1B85M"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+
+        // Initialize Messaging
+        const messaging = getMessaging(app);
+
+        // Generate and display token
+        document.getElementById('generateToken').addEventListener('click', async () => {
+            try {
+                const currentToken = await getToken(messaging, { vapidKey: "BAqmj77dJkI_QRzTz7M7G5hSLnQOPxNHk0HJw-vh4J2y46vvK8YAWaQzlcNxdqZOly5RTI7n81K50jtDqFibHq8" });
+                if (currentToken) {
+                    document.getElementById('token').textContent = `Device Token: ${currentToken}`;
+                    console.log("Device Token:", currentToken);
+                } else {
+                    document.getElementById('token').textContent = "No registration token available.";
+                }
+            } catch (error) {
+                console.error("An error occurred while retrieving token:", error);
+                document.getElementById('token').textContent =
+                    "Error generating token. Check console for details.";
+            }
+        });
+    </script>
+</body>
+</html>
+

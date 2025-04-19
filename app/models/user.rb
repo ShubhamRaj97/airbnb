@@ -7,9 +7,15 @@ class User < ApplicationRecord
 
   has_many :access_tokens, class_name: 'Doorkeeper::AccessToken', foreign_key: :resource_owner_id
 
+   validates :email, presence: true, unless: -> { phone.present? }
+  
+  # Skip password validation for phone-only users
+    validates :password, presence: true, on: :create, unless: -> { phone.present? }
+      validates :phone, uniqueness: true, allow_nil: true
+
+
 
   def self.authenticate(email, password, type)
-    binding.pry
     # Here, you can add custom logic to check 'type' and validate the user
     user = User.find_by(email: email)
     # Authenticate the user based on password

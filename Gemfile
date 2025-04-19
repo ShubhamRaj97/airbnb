@@ -20,6 +20,15 @@ gem "jbuilder"
 gem "devise"
 
 gem "doorkeeper"
+gem 'twilio-ruby'
+gem 'dotenv-rails', groups: [:development, :test]
+gem 'figaro'
+
+gem "googleauth"
+
+gem "httparty"
+
+
 
 gem 'cancancan'
 

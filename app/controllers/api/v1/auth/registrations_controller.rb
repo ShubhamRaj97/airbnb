@@ -22,7 +22,7 @@ class Api::V1::Auth::RegistrationsController < ApiController
 		  
 		else 
 			user =  User.find_by(email: params[:email])
-			if user.present? 
+		  if user.present? 
 			  render json: { error: "email has already taken" }, status: :unprocessable_entity 
 		  else 
 		 	  render json: { error: "Please sign in to continue sign up" }, status: :unprocessable_entity
