@@ -108,7 +108,7 @@ GEM
       dotenv (= 3.1.4)
       railties (>= 6.1)
     drb (2.2.1)
-    error_highlight (0.6.0)
+    error_highlight (0.7.0)
     erubi (1.13.0)
     faraday (2.12.1)
       faraday-net_http (>= 2.0, < 3.5)
@@ -342,7 +342,7 @@ DEPENDENCIES
   devise
   doorkeeper
   dotenv-rails
-  error_highlight (>= 0.4.0)
+  error_highlight (>= 0.7.0)
   figaro
   googleauth
   httparty
