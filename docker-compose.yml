@@ -24,6 +24,8 @@ services:
       DATABASE_HOST: db
       DATABASE_USERNAME: postgres
       DATABASE_PASSWORD: password
+      SECRET_KEY_BASE: ae8d524ca5ab00e85795d615a5754d85f67bdcabdc93720ab561361c1814f909943f186875d785f926a946c6e8772184a3b475d200ee7fb0506cd47f4da34065
+
 
 volumes:
   db_data:
